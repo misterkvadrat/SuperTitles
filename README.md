@@ -6,16 +6,6 @@ realm restoration.
 ## Requirements
 
 - CK3 1.19.x
-- Independent adult ruler
-- At peace
-- At least two held empire-tier titles
-- 1,000 gold and 3,000 prestige
-
-The decision creates a dynamic hegemony-tier title, moves all personally held
-empire titles under it de jure, copies the old primary title's map color, and
-generates a coat of arms. Its visible name and adjective are inherited from the
-creator's primary empire; no "Hegemony" suffix is added. Use CK3's normal title
-customization screen afterward to rename the title or change its coat of arms.
 
 With CK3AGOT, the mod also:
 
@@ -45,7 +35,7 @@ With CK3AGOT, the mod also:
    `path="mod/SuperTitles"`
 4. Enable **SuperTitles** in the launcher.
 
-Load after vanilla. With CK3AGOT, load after **A Game of Thrones** and its
+Load after AGOT. With CK3AGOT, load after **A Game of Thrones** and its
 submods. No AGOT compatch is required because this mod adds one namespaced
 decision and does not use `replace_path`.
 
