@@ -1,0 +1,407 @@
+﻿st_restore_gulltown_lordship_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:d_gulltown
+		exists = title:k_gulltown
+		has_title = title:d_gulltown
+		NOT = { exists = title:k_gulltown.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		gold = 2000
+		prestige = 750
+	}
+
+	effect = {
+		get_title = title:k_gulltown
+		title:k_gulltown = {
+			set_de_jure_liege_title = title:e_the_vale
+		}
+		title:d_gulltown = {
+			set_de_jure_liege_title = title:k_gulltown
+		}
+		dynasty = { add_dynasty_prestige = 1000 }
+		set_primary_title_to = title:k_gulltown
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_restore_flints_finger_lordship_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:d_flints_finger
+		exists = title:d_lakelands
+		exists = title:k_flints_finger
+		has_title = title:d_flints_finger
+		has_title = title:d_lakelands
+		NOT = { exists = title:k_flints_finger.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		gold = 600
+		prestige = 750
+	}
+
+	effect = {
+		get_title = title:k_flints_finger
+		title:k_flints_finger = {
+			set_de_jure_liege_title = title:e_the_north
+		}
+		title:d_flints_finger = {
+			set_de_jure_liege_title = title:k_flints_finger
+		}
+		title:d_lakelands = {
+			set_de_jure_liege_title = title:k_flints_finger
+		}
+		dynasty = { add_dynasty_prestige = 350 }
+		set_primary_title_to = title:k_flints_finger
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_restore_bear_island_lordship_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:d_bear_island
+		exists = title:k_bear_island
+		has_title = title:d_bear_island
+		NOT = { exists = title:k_bear_island.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		gold = 500
+		prestige = 1000
+	}
+
+	effect = {
+		get_title = title:k_bear_island
+		title:k_bear_island = {
+			set_de_jure_liege_title = title:e_the_north
+		}
+		title:d_bear_island = {
+			set_de_jure_liege_title = title:k_bear_island
+		}
+		dynasty = { add_dynasty_prestige = 400 }
+		set_primary_title_to = title:k_bear_island
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_restore_bronze_lordship_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:d_runestone
+		exists = title:k_runestone
+		has_title = title:d_runestone
+		NOT = { exists = title:k_runestone.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		gold = 1250
+		prestige = 1500
+	}
+
+	effect = {
+		get_title = title:k_runestone
+		title:k_runestone = {
+			set_de_jure_liege_title = title:e_the_vale
+		}
+		title:d_runestone = {
+			set_de_jure_liege_title = title:k_runestone
+		}
+		dynasty = { add_dynasty_prestige = 500 }
+		set_global_variable = pk_runestone_decision
+		set_primary_title_to = title:k_runestone
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_restore_sisters_lordship_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:d_the_sisters
+		exists = title:k_the_sisters
+		has_title = title:d_the_sisters
+		NOT = { exists = title:k_the_sisters.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		gold = 500
+		prestige = 750
+	}
+
+	effect = {
+		get_title = title:k_the_sisters
+		title:k_the_sisters = {
+			set_de_jure_liege_title = title:e_the_vale
+		}
+		title:d_the_sisters = {
+			set_de_jure_liege_title = title:k_the_sisters
+		}
+		dynasty = { add_dynasty_prestige = 250 }
+		set_global_variable = pk_sisters_decision
+		set_primary_title_to = title:k_the_sisters
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_restore_fair_isle_lordship_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:d_fair_isle
+		exists = title:k_fair_isle
+		has_title = title:d_fair_isle
+		NOT = { exists = title:k_fair_isle.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		gold = 750
+		prestige = 1000
+	}
+
+	effect = {
+		get_title = title:k_fair_isle
+		title:k_fair_isle = {
+			set_de_jure_liege_title = title:e_the_westerlands
+		}
+		title:d_fair_isle = {
+			set_de_jure_liege_title = title:k_fair_isle
+		}
+		dynasty = { add_dynasty_prestige = 500 }
+		set_global_variable = pk_agot_proclaim_pk_fair_isle_decision
+		set_primary_title_to = title:k_fair_isle
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_create_bite_empire_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:e_the_bite
+		exists = title:k_the_white_knife
+		exists = title:k_the_neck
+		exists = title:k_the_bite
+		exists = title:k_the_sisters
+		NOT = { exists = title:e_the_bite.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+		prestige_level >= 4
+		has_title = title:k_the_white_knife
+		has_title = title:k_the_neck
+		has_title = title:k_the_bite
+		OR = {
+			title:k_the_sisters = { is_title_created = no }
+			has_title = title:k_the_sisters
+		}
+	}
+
+	cost = {
+		gold = 1000
+		prestige = 2000
+	}
+
+	effect = {
+		get_title = title:e_the_bite
+		title:e_the_bite = {
+			set_de_jure_liege_title = title:h_the_iron_throne
+		}
+		title:k_the_white_knife = {
+			set_de_jure_liege_title = title:e_the_bite
+		}
+		title:k_the_neck = {
+			set_de_jure_liege_title = title:e_the_bite
+		}
+		title:k_the_bite = {
+			set_de_jure_liege_title = title:e_the_bite
+		}
+		if = {
+			limit = { title:k_the_sisters = { is_title_created = yes } }
+			title:k_the_sisters = {
+				set_de_jure_liege_title = title:e_the_bite
+			}
+		}
+		set_primary_title_to = title:e_the_bite
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_restore_stepstones_empire_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:e_dorne
+		exists = title:k_the_stepstones
+		has_title = title:e_dorne
+		NOT = {
+			title:e_dorne = {
+				has_variable = st_dornish_stepstones_restored
+			}
+		}
+	}
+
+	is_valid = {
+		is_independent_ruler = yes
+		is_available_adult = yes
+		is_at_war = no
+		completely_controls = title:k_the_stepstones
+		custom_description = {
+			text = st_stepstones_no_landed_pirates_requirement
+			NOT = {
+				title:k_the_stepstones = {
+					any_in_de_jure_hierarchy = {
+						exists = holder
+						holder = {
+							government_has_flag = government_is_pirate_trigger_check
+						}
+					}
+				}
+			}
+		}
+	}
+
+	cost = {
+		gold = 750
+		prestige = 2500
+	}
+
+	effect = {
+		title:e_dorne = {
+			set_variable = st_dornish_stepstones_restored
+		}
+		title:k_the_stepstones = {
+			set_de_jure_liege_title = title:e_dorne
+		}
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_proclaim_kingdom_of_the_hand_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		exists = title:e_dorne
+		exists = title:e_narrow_sea
+		exists = title:h_hand_kingdom
+		has_title = title:e_dorne
+		title:e_dorne = {
+			has_variable = st_dornish_stepstones_restored
+		}
+		NOT = { exists = title:h_hand_kingdom.holder }
+	}
+
+	is_valid = {
+		is_independent_ruler = yes
+		is_available_adult = yes
+		is_at_war = no
+		has_title = title:e_narrow_sea
+		completely_controls = title:e_narrow_sea
+	}
+
+	effect = {
+		get_title = title:h_hand_kingdom
+		title:e_dorne = {
+			set_de_jure_liege_title = title:h_hand_kingdom
+		}
+		title:e_narrow_sea = {
+			set_de_jure_liege_title = title:h_hand_kingdom
+		}
+		set_primary_title_to = title:h_hand_kingdom
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}

@@ -1,0 +1,23 @@
+﻿k_flints_finger = {
+	landless = yes
+	color = { 111 130 145 }
+	capital = c_flints_finger
+
+	can_create = { always = no }
+}
+
+e_the_bite = {
+	landless = yes
+	color = { 151 198 255 }
+	capital = c_sunderland
+
+	can_create = { always = no }
+}
+
+h_hand_kingdom = {
+	landless = yes
+	color = { 215 128 66 }
+	capital = c_sunspear
+
+	can_create = { always = no }
+}

@@ -1,0 +1,190 @@
+﻿ch_create_custom_hegemony_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
+
+	is_shown = {
+		is_ai = no
+		is_landed = yes
+		highest_held_title_tier >= tier_empire
+		highest_held_title_tier < tier_hegemony
+	}
+
+	is_valid = {
+		is_independent_ruler = yes
+		any_held_title = {
+			count >= 2
+			tier = tier_empire
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+	cost = {
+		gold = 1000
+		prestige = 3000
+	}
+
+	effect = {
+		st_create_high_kingdom_effect = {
+			TITLE_NAME = CH_CUSTOM_HEGEMONY_TITLE_NAME
+			TITLE_ADJ = CH_CUSTOM_HEGEMONY_TITLE_ADJ
+		}
+
+		every_held_title = {
+			limit = {
+				tier = tier_empire
+			}
+			set_de_jure_liege_title = scope:st_new_title
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+}
+
+st_unite_isles_and_rivers_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
+
+	is_shown = {
+		is_ai = no
+		is_landed = yes
+		exists = title:e_the_iron_islands
+		exists = title:e_the_riverlands
+		has_title = title:e_the_iron_islands
+		has_title = title:e_the_riverlands
+		NOT = {
+			any_held_title = {
+				has_variable = st_isles_and_rivers_title
+			}
+		}
+	}
+
+	is_valid = {
+		is_independent_ruler = yes
+		highest_held_title_tier < tier_hegemony
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+	cost = {
+		gold = 1000
+		prestige = 3000
+	}
+
+	effect = {
+		st_create_high_kingdom_effect = {
+			TITLE_NAME = ST_ISLES_AND_RIVERS_TITLE_NAME
+			TITLE_ADJ = ST_ISLES_AND_RIVERS_TITLE_ADJ
+		}
+
+		scope:st_new_title = {
+			set_variable = st_isles_and_rivers_title
+		}
+		title:e_the_iron_islands = {
+			set_de_jure_liege_title = scope:st_new_title
+		}
+		title:e_the_riverlands = {
+			set_de_jure_liege_title = scope:st_new_title
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+}
+
+st_form_western_essos_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
+
+	is_shown = {
+		is_ai = no
+		is_landed = yes
+		exists = title:e_narrow_sea
+		exists = title:e_daoryrdembos
+		has_title = title:e_narrow_sea
+		has_title = title:e_daoryrdembos
+		NOT = {
+			any_held_title = {
+				has_variable = st_western_essos_title
+			}
+		}
+	}
+
+	is_valid = {
+		is_independent_ruler = yes
+		highest_held_title_tier < tier_hegemony
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+	cost = {
+		gold = 1000
+		prestige = 3000
+	}
+
+	effect = {
+		st_create_high_kingdom_effect = {
+			TITLE_NAME = ST_WESTERN_ESSOS_TITLE_NAME
+			TITLE_ADJ = ST_WESTERN_ESSOS_TITLE_ADJ
+		}
+
+		scope:st_new_title = {
+			set_variable = st_western_essos_title
+		}
+		title:e_narrow_sea = {
+			set_de_jure_liege_title = scope:st_new_title
+		}
+		title:e_daoryrdembos = {
+			set_de_jure_liege_title = scope:st_new_title
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+}

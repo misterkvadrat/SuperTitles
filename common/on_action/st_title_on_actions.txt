@@ -1,0 +1,140 @@
+﻿on_title_gain = {
+	events = {
+		supertitles.1000
+	}
+}
+
+quarterly_playable_pulse = {
+	on_actions = {
+		st_supertitles_maintenance
+	}
+}
+
+st_supertitles_maintenance = {
+	trigger = {
+		OR = {
+			any_held_title = {
+				has_variable = st_western_essos_title
+			}
+			AND = {
+				is_house_head = yes
+				OR = {
+					AND = {
+						house = dynasty:dynn_Reyne.dynasty_founder.house
+						house = { NOT = { has_variable = st_reyne_claims_initialized } }
+					}
+					AND = {
+						house = dynasty:dynn_Gardener.dynasty_founder.house
+						house = { NOT = { has_variable = st_gardener_claims_initialized } }
+					}
+					AND = {
+						house = dynasty:dynn_Durrandon.dynasty_founder.house
+						house = { NOT = { has_variable = st_durrandon_claims_initialized } }
+					}
+					AND = {
+						house = dynasty:dynn_Hoare.dynasty_founder.house
+						house = { NOT = { has_variable = st_hoare_claims_initialized } }
+					}
+				}
+			}
+			has_title = title:e_the_bite
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { has_title = title:e_the_bite }
+			title:e_the_bite = {
+				set_de_jure_liege_title = title:h_the_iron_throne
+			}
+		}
+
+		if = {
+			limit = {
+				any_held_title = {
+					has_variable = st_western_essos_title
+				}
+			}
+			add_character_flag = st_western_essos_ruler
+			if = {
+				limit = { has_trait = augustus }
+				remove_trait = augustus
+			}
+			if = {
+				limit = { NOT = { has_trait = st_prince_of_princes } }
+				add_trait = st_prince_of_princes
+			}
+		}
+
+		if = {
+			limit = {
+				is_house_head = yes
+				house = dynasty:dynn_Reyne.dynasty_founder.house
+				house = { NOT = { has_variable = st_reyne_claims_initialized } }
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:e_the_westerlands }
+					NOT = { has_claim_on = title:e_the_westerlands }
+				}
+				add_pressed_claim = title:e_the_westerlands
+			}
+			house = { set_variable = st_reyne_claims_initialized }
+		}
+
+		if = {
+			limit = {
+				is_house_head = yes
+				house = dynasty:dynn_Gardener.dynasty_founder.house
+				house = { NOT = { has_variable = st_gardener_claims_initialized } }
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:e_the_reach }
+					NOT = { has_claim_on = title:e_the_reach }
+				}
+				add_pressed_claim = title:e_the_reach
+			}
+			house = { set_variable = st_gardener_claims_initialized }
+		}
+
+		if = {
+			limit = {
+				is_house_head = yes
+				house = dynasty:dynn_Durrandon.dynasty_founder.house
+				house = { NOT = { has_variable = st_durrandon_claims_initialized } }
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:e_the_stormlands }
+					NOT = { has_claim_on = title:e_the_stormlands }
+				}
+				add_pressed_claim = title:e_the_stormlands
+			}
+			house = { set_variable = st_durrandon_claims_initialized }
+		}
+
+		if = {
+			limit = {
+				is_house_head = yes
+				house = dynasty:dynn_Hoare.dynasty_founder.house
+				house = { NOT = { has_variable = st_hoare_claims_initialized } }
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:e_the_iron_islands }
+					NOT = { has_claim_on = title:e_the_iron_islands }
+				}
+				add_pressed_claim = title:e_the_iron_islands
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:e_the_riverlands }
+					NOT = { has_claim_on = title:e_the_riverlands }
+				}
+				add_pressed_claim = title:e_the_riverlands
+			}
+			house = { set_variable = st_hoare_claims_initialized }
+		}
+	}
+}

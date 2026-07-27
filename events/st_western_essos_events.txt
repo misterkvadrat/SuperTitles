@@ -1,0 +1,53 @@
+﻿namespace = supertitles
+
+supertitles.1000 = {
+	type = character_event
+	title = supertitles.1000.t
+	desc = supertitles.1000.desc
+	theme = realm
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		scope:title ?= {
+			has_variable = st_western_essos_title
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				scope:previous_holder ?= {
+					is_alive = yes
+				}
+			}
+			scope:previous_holder = {
+				remove_character_flag = st_western_essos_ruler
+				if = {
+					limit = { has_trait = augustus }
+					remove_trait = augustus
+				}
+				if = {
+					limit = { has_trait = st_prince_of_princes }
+					remove_trait = st_prince_of_princes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = supertitles.1000.a
+		add_character_flag = st_western_essos_ruler
+		if = {
+			limit = { has_trait = augustus }
+			remove_trait = augustus
+		}
+		if = {
+			limit = { NOT = { has_trait = st_prince_of_princes } }
+			add_trait = st_prince_of_princes
+		}
+	}
+}
