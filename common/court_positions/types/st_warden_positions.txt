@@ -1,0 +1,219 @@
+﻿st_warden_of_the_bite_court_position = {
+	sort_order = 989
+	max_available_positions = 1
+	minimum_rank = empire
+	court_position_asset = {
+		animation = throne_room_one_handed_passive_1
+		background = "gfx/interface/illustrations/event_scenes/north/throneroom_winterfell.dds"
+	}
+	opinion = {
+		value = ceremonial_court_position_opinion
+	}
+
+	is_shown = {
+		has_title = title:h_the_iron_throne
+		exists = title:e_the_bite.holder
+	}
+
+	valid_position = {
+		has_title = title:h_the_iron_throne
+		exists = title:e_the_bite.holder
+	}
+
+	is_shown_character = {
+		scope:employee ?= {
+			is_imprisoned = no
+		}
+	}
+
+	valid_character = {
+		scope:employee ?= {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_vassal_of = scope:liege
+				is_courtier_of = scope:liege
+			}
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = major_court_position_prestige_revoke_cost
+			if = {
+				limit = {
+					exists = dynasty
+					dynasty = { has_dynasty_perk = fp2_coterie_legacy_1 }
+					employs_court_position = st_warden_of_the_bite_court_position
+					any_court_position_holder = {
+						type = st_warden_of_the_bite_court_position
+						exists = dynasty
+						house = prev.house
+					}
+				}
+				multiply = 0
+			}
+			if = {
+				limit = {
+					exists = this
+					is_ai = yes
+				}
+				multiply = 0
+			}
+		}
+	}
+
+	salary = {
+		round = no
+		gold = {
+			value = minor_court_position_salary
+			if = {
+				limit = {
+					scope:liege = {
+						exists = dynasty
+						dynasty = { has_dynasty_perk = fp2_coterie_legacy_1 }
+						employs_court_position = st_warden_of_the_bite_court_position
+						any_court_position_holder = {
+							type = st_warden_of_the_bite_court_position
+							exists = dynasty
+							house = prev.house
+						}
+					}
+				}
+				multiply = {
+					value = 0.0
+					desc = inner_circle_salary_mod
+					format = "BASE_VALUE_FORMAT_DECIMALS_MINUS_POSITIVE"
+				}
+			}
+		}
+		prestige = {
+			value = minor_court_position_prestige_salary
+			if = {
+				limit = {
+					scope:liege = {
+						exists = dynasty
+						dynasty = { has_dynasty_perk = fp2_coterie_legacy_1 }
+						employs_court_position = st_warden_of_the_bite_court_position
+						any_court_position_holder = {
+							type = st_warden_of_the_bite_court_position
+							exists = dynasty
+							house = prev.house
+						}
+					}
+				}
+				multiply = {
+					value = 0.0
+					desc = inner_circle_salary_mod
+					format = "BASE_VALUE_FORMAT_DECIMALS_MINUS_POSITIVE"
+				}
+			}
+		}
+	}
+
+	scaling_employer_modifiers = {
+		terrible = {
+			monthly_county_control_growth_add = 0.1
+		}
+		poor = {
+			monthly_county_control_growth_add = 0.1
+		}
+		average = {
+			monthly_county_control_growth_add = 0.2
+		}
+		good = {
+			monthly_county_control_growth_add = 0.2
+		}
+		excellent = {
+			monthly_county_control_growth_add = 0.3
+		}
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 5
+		if = {
+			limit = {
+				liege ?= title:h_the_iron_throne.holder
+				primary_title = title:e_the_bite
+			}
+			add = {
+				value = 60
+				desc = court_position_historic_title_holder
+			}
+			add = {
+				value = martial
+				multiply = 2.5
+				max = 50
+				desc = court_position_skill_martial
+			}
+			if = {
+				limit = {
+					has_trait = overseer
+				}
+				add = {
+					value = 25
+					desc = court_position_overseer_trait
+				}
+			}
+			if = {
+				limit = {
+					has_trait = just
+				}
+				add = {
+					value = 10
+					desc = court_position_just_trait
+				}
+			}
+		}
+		else = {
+			add = {
+				value = martial
+				multiply = 1.5
+				max = 40
+				desc = court_position_skill_martial
+			}
+		}
+	}
+
+	modifier = {
+		stewardship = 1
+	}
+
+	on_court_position_received = {
+		basic_gained_court_position_effect = yes
+	}
+	on_court_position_revoked = {
+		basic_revoked_court_position_effect = yes
+	}
+	on_court_position_invalidated = {
+		basic_invalidated_court_position_effect = yes
+	}
+	on_court_position_vacated = {
+		court_position_vacated_event_effect = {
+			COURT_POSITION_TYPE = st_warden_of_the_bite_court_position
+		}
+	}
+
+	ai_candidate_score = {
+		value = 5
+		add = court_position_candidate_score_base_value
+		if = {
+			limit = {
+				scope:employee = { has_title = title:e_the_bite }
+			}
+			add = 50
+		}
+		if = {
+			limit = {
+				scope:liege = {
+					opinion = {
+						target = scope:employee
+						value < -60
+					}
+				}
+			}
+			add = -60
+		}
+	}
+}

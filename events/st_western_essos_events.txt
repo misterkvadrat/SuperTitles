@@ -51,3 +51,30 @@ supertitles.1000 = {
 		}
 	}
 }
+
+supertitles.1001 = {
+	hidden = yes
+
+	trigger = {
+		OR = {
+			scope:title ?= {
+				has_variable = st_winter_kingdom_title
+			}
+			scope:title = title:h_winter_kingdom
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				scope:previous_holder ?= {
+					is_alive = yes
+				}
+			}
+			scope:previous_holder = {
+				remove_character_flag = st_winter_kingdom_ruler
+			}
+		}
+		add_character_flag = st_winter_kingdom_ruler
+	}
+}

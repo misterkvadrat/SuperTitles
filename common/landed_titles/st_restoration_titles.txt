@@ -6,10 +6,32 @@
 	can_create = { always = no }
 }
 
+k_gulltown = {
+	landless = yes
+	color = { 46 108 132 }
+	capital = c_gulltown
+}
+
 e_the_bite = {
 	landless = yes
 	color = { 151 198 255 }
 	capital = c_sunderland
+
+	can_create = { always = no }
+}
+
+h_west_essos = {
+	landless = yes
+	color = { 84 94 139 }
+	capital = c_braavos
+
+	can_create = { always = no }
+}
+
+h_winter_kingdom = {
+	landless = yes
+	color = { 132 158 176 }
+	capital = c_winterfell
 
 	can_create = { always = no }
 }

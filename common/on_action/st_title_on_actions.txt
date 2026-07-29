@@ -1,6 +1,7 @@
 ﻿on_title_gain = {
 	events = {
 		supertitles.1000
+		supertitles.1001
 	}
 }
 
@@ -15,6 +16,10 @@ st_supertitles_maintenance = {
 		OR = {
 			any_held_title = {
 				has_variable = st_western_essos_title
+			}
+			has_title = title:h_winter_kingdom
+			any_held_title = {
+				has_variable = st_winter_kingdom_title
 			}
 			AND = {
 				is_house_head = yes
@@ -64,6 +69,18 @@ st_supertitles_maintenance = {
 				limit = { NOT = { has_trait = st_prince_of_princes } }
 				add_trait = st_prince_of_princes
 			}
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_title = title:h_winter_kingdom
+					any_held_title = {
+						has_variable = st_winter_kingdom_title
+					}
+				}
+			}
+			add_character_flag = st_winter_kingdom_ruler
 		}
 
 		if = {

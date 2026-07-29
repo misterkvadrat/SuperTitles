@@ -6,6 +6,8 @@ $required = @(
     'common\decisions\st_agot_restoration_decisions.txt'
     'common\decisions\st_supertitles_decisions.txt'
     'common\decisions\zz_supertitles\00_st_agot_petty_kingdom_overrides.txt'
+    'common\court_positions\types\st_warden_positions.txt'
+    'gfx\interface\icons\court_position_types\st_warden_of_the_bite_court_position.dds'
     'common\flavorization\st_western_essos_titles.txt'
     'common\landed_titles\st_restoration_titles.txt'
     'common\on_action\st_title_on_actions.txt'
@@ -28,6 +30,9 @@ $scripts = Get-ChildItem -LiteralPath $root -Recurse -File |
     Where-Object { $_.Extension -eq '.txt' }
 $scriptText = ($scripts | ForEach-Object { Get-Content -LiteralPath $_.FullName -Raw }) -join "`n"
 $descriptor = Get-Content -LiteralPath (Join-Path $root 'descriptor.mod') -Raw
+$englishLocalization = Get-Content -LiteralPath (Join-Path $root 'localization\english\st_supertitles_l_english.yml') -Raw
+$russianLocalization = Get-Content -LiteralPath (Join-Path $root 'localization\russian\st_supertitles_l_russian.yml') -Raw
+$localizationText = $englishLocalization + "`n" + $russianLocalization
 
 if ($descriptor -notmatch 'name="SuperTitles"') {
     throw 'Descriptor does not use the SuperTitles name.'
@@ -61,6 +66,13 @@ if ($scriptText -notmatch 'st_high_prince_male\s*=\s*\{' -or
     $scriptText -notmatch 'flag\s*=\s*st_western_essos_ruler') {
     throw 'Western Essos ruler style is missing.'
 }
+if ($scriptText -notmatch 'h_west_essos\s*=\s*\{' -or
+    $scriptText -notmatch 'get_title\s*=\s*title:h_west_essos' -or
+    $scriptText -notmatch 'set_primary_title_to\s*=\s*title:h_west_essos' -or
+    $scriptText -notmatch 'OR\s*=\s*\{\s*has_title\s*=\s*title:e_narrow_sea\s*has_title\s*=\s*title:e_daoryrdembos' -or
+    $localizationText -notmatch 'h_west_essos:\s*"') {
+    throw 'Static Western Essos title or its early visibility is incomplete.'
+}
 
 $restorations = @(
     @{ Decision = 'st_restore_gulltown_lordship_decision'; Duchy = 'd_gulltown'; Title = 'k_gulltown'; Gold = 2000; Prestige = 750; Renown = 1000 }
@@ -88,10 +100,43 @@ if ($scriptText -notmatch 'e_the_bite\s*=\s*\{' -or
     $scriptText -notmatch 'has_title\s*=\s*title:k_the_white_knife' -or
     $scriptText -notmatch 'has_title\s*=\s*title:k_the_neck' -or
     $scriptText -notmatch 'has_title\s*=\s*title:k_the_bite' -or
+    $scriptText -notmatch 'completely_controls\s*=\s*title:k_the_white_knife' -or
+    $scriptText -notmatch 'completely_controls\s*=\s*title:k_the_neck' -or
+    $scriptText -notmatch 'completely_controls\s*=\s*title:k_the_bite' -or
+    $scriptText -notmatch 'completely_controls\s*=\s*title:k_the_sisters' -or
+    $scriptText -notmatch 'add_dynasty_prestige\s*=\s*2500' -or
     $scriptText -notmatch 'title:k_the_sisters\s*=\s*\{\s*is_title_created\s*=\s*no' -or
     $scriptText -notmatch 'set_de_jure_liege_title\s*=\s*title:h_the_iron_throne' -or
     $scriptText -notmatch 'set_primary_title_to\s*=\s*title:e_the_bite') {
     throw 'Bite empire decision is incomplete.'
+}
+if ($scriptText -notmatch 'culture\s*=\s*\{\s*has_variable\s*=\s*wildling_culture' -or
+    $scriptText -notmatch 'h_winter_kingdom\s*=\s*\{' -or
+    $scriptText -notmatch 'st_create_winter_kingdom_decision\s*=\s*\{' -or
+    $scriptText -notmatch 'prestige_level\s*>=\s*5' -or
+    $scriptText -notmatch 'has_title\s*=\s*title:e_beyond_the_wall' -or
+    $scriptText -notmatch 'has_title\s*=\s*title:e_the_wall' -or
+    $scriptText -notmatch 'add_dynasty_prestige\s*=\s*5000' -or
+    $scriptText -notmatch 'add_legitimacy\s*=\s*200' -or
+    $scriptText -notmatch 'set_variable\s*=\s*st_winter_kingdom_title' -or
+    $scriptText -notmatch 'add_character_flag\s*=\s*st_winter_kingdom_ruler' -or
+    $scriptText -notmatch 'st_ice_king_male\s*=\s*\{' -or
+    $localizationText -notmatch 'h_winter_kingdom:\s*"Winterlands"' -or
+    $localizationText -notmatch 'st_ice_king_male:\s*"' -or
+    $scriptText -notmatch '(?s)restore_the_nights_watch\s*=\s*\{.*?NOT\s*=\s*\{\s*has_title\s*=\s*title:h_winter_kingdom' -or
+    $scriptText -notmatch 'set_primary_title_to\s*=\s*title:h_winter_kingdom') {
+    throw 'Winterlands decision or ruler title is incomplete.'
+}
+if ($scriptText -notmatch 'k_gulltown\s*=\s*\{\s*landless\s*=\s*yes\s*color\s*=\s*\{\s*46\s+108\s+132\s*\}' -or
+    $russianLocalization -notmatch 'k_flints_finger:\s*"' -or
+    $englishLocalization -notmatch 'k_flints_finger:\s*"Flint''s Finger"') {
+    throw 'Gulltown color or Flint''s Finger title localization is incomplete.'
+}
+if ($scriptText -notmatch 'st_warden_of_the_bite_court_position\s*=\s*\{' -or
+    $scriptText -notmatch 'exists\s*=\s*title:e_the_bite\.holder' -or
+    $scriptText -notmatch 'primary_title\s*=\s*title:e_the_bite' -or
+    $localizationText -notmatch 'st_warden_of_the_bite_court_position:\s*"') {
+    throw 'Warden of the Bite court position is incomplete.'
 }
 
 if ($scriptText -match '(?<![A-Za-z0-9_])e_stepstones\s*=\s*\{' -or

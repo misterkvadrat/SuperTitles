@@ -255,6 +255,24 @@ st_create_bite_empire_decision = {
 
 	is_shown = {
 		is_landed = yes
+		culture = {
+			OR = {
+				this = culture:northman
+				this = culture:harborman
+				this = culture:lakefolk
+				this = culture:valeman_finger
+				this = culture:valeman_upper
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:northman
+						this = culture:harborman
+						this = culture:lakefolk
+						this = culture:valeman_finger
+						this = culture:valeman_upper
+					}
+				}
+			}
+		}
 		exists = title:e_the_bite
 		exists = title:k_the_white_knife
 		exists = title:k_the_neck
@@ -269,9 +287,12 @@ st_create_bite_empire_decision = {
 		has_title = title:k_the_white_knife
 		has_title = title:k_the_neck
 		has_title = title:k_the_bite
+		completely_controls = title:k_the_white_knife
+		completely_controls = title:k_the_neck
+		completely_controls = title:k_the_bite
 		OR = {
 			title:k_the_sisters = { is_title_created = no }
-			has_title = title:k_the_sisters
+			completely_controls = title:k_the_sisters
 		}
 	}
 
@@ -300,7 +321,68 @@ st_create_bite_empire_decision = {
 				set_de_jure_liege_title = title:e_the_bite
 			}
 		}
+		dynasty = {
+			add_dynasty_prestige = 2500
+		}
 		set_primary_title_to = title:e_the_bite
+	}
+
+	ai_potential = { always = yes }
+	ai_will_do = { base = 100 }
+}
+
+st_create_winter_kingdom_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+
+	is_shown = {
+		is_landed = yes
+		culture = {
+			has_variable = wildling_culture
+		}
+		exists = title:h_winter_kingdom
+		exists = title:e_beyond_the_wall
+		exists = title:e_the_wall
+		exists = title:e_the_north
+		NOT = { exists = title:h_winter_kingdom.holder }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+		prestige_level >= 5
+		has_title = title:e_beyond_the_wall
+		has_title = title:e_the_wall
+		has_title = title:e_the_north
+	}
+
+	cost = {
+		gold = 1000
+		prestige = 1000
+	}
+
+	effect = {
+		get_title = title:h_winter_kingdom
+		title:h_winter_kingdom = {
+			set_variable = st_winter_kingdom_title
+		}
+		title:e_beyond_the_wall = {
+			set_de_jure_liege_title = title:h_winter_kingdom
+		}
+		title:e_the_wall = {
+			set_de_jure_liege_title = title:h_winter_kingdom
+		}
+		title:e_the_north = {
+			set_de_jure_liege_title = title:h_winter_kingdom
+		}
+		dynasty = {
+			add_dynasty_prestige = 5000
+		}
+		add_legitimacy = 200
+		add_character_flag = st_winter_kingdom_ruler
+		set_primary_title_to = title:h_winter_kingdom
 	}
 
 	ai_potential = { always = yes }
