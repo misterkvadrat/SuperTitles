@@ -43,3 +43,20 @@ h_hand_kingdom = {
 
 	can_create = { always = no }
 }
+
+# Empty kingdom shells stay in their AGOT empires from game start. Restoration
+# decisions below populate them with their intended duchies.
+e_the_vale = {
+	k_gulltown = { }
+	k_runestone = { }
+	k_the_sisters = { }
+}
+
+e_the_north = {
+	k_flints_finger = { }
+	k_bear_island = { }
+}
+
+e_the_westerlands = {
+	k_fair_isle = { }
+}
