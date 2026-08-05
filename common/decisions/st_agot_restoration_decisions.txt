@@ -24,9 +24,6 @@
 
 	effect = {
 		get_title = title:k_gulltown
-		title:k_gulltown = {
-			set_de_jure_liege_title = title:e_the_vale
-		}
 		title:d_gulltown = {
 			set_de_jure_liege_title = title:k_gulltown
 		}
@@ -66,9 +63,6 @@ st_restore_flints_finger_lordship_decision = {
 
 	effect = {
 		get_title = title:k_flints_finger
-		title:k_flints_finger = {
-			set_de_jure_liege_title = title:e_the_north
-		}
 		title:d_flints_finger = {
 			set_de_jure_liege_title = title:k_flints_finger
 		}
@@ -109,9 +103,6 @@ st_restore_bear_island_lordship_decision = {
 
 	effect = {
 		get_title = title:k_bear_island
-		title:k_bear_island = {
-			set_de_jure_liege_title = title:e_the_north
-		}
 		title:d_bear_island = {
 			set_de_jure_liege_title = title:k_bear_island
 		}
@@ -149,9 +140,6 @@ st_restore_bronze_lordship_decision = {
 
 	effect = {
 		get_title = title:k_runestone
-		title:k_runestone = {
-			set_de_jure_liege_title = title:e_the_vale
-		}
 		title:d_runestone = {
 			set_de_jure_liege_title = title:k_runestone
 		}
@@ -190,9 +178,6 @@ st_restore_sisters_lordship_decision = {
 
 	effect = {
 		get_title = title:k_the_sisters
-		title:k_the_sisters = {
-			set_de_jure_liege_title = title:e_the_vale
-		}
 		title:d_the_sisters = {
 			set_de_jure_liege_title = title:k_the_sisters
 		}
@@ -231,9 +216,6 @@ st_restore_fair_isle_lordship_decision = {
 
 	effect = {
 		get_title = title:k_fair_isle
-		title:k_fair_isle = {
-			set_de_jure_liege_title = title:e_the_westerlands
-		}
 		title:d_fair_isle = {
 			set_de_jure_liege_title = title:k_fair_isle
 		}
